@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنفوجرافيك: اتجاهات الصناعة وأبحاث السوق</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #F8F9FA;
+            color: #343A40;
+        }
+        :root {
+            --color-primary: #007BFF;
+            --color-secondary: #28A745;
+            --color-accent: #FFC107;
+            --color-info: #17A2B8;
+            --color-danger: #DC3545;
+            --color-purple: #6F42C1;
+            --color-background: #F8F9FA;
+            --color-text: #343A40;
+            --color-card-bg: #FFFFFF;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .kpi-card {
+            background-color: var(--color-card-bg);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+        .kpi-label {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-primary);
+        }
+        .card {
+            background-color: var(--color-card-bg);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .swot-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .swot-card {
+            border-radius: 0.5rem;
+            padding: 1rem;
+            color: white;
+        }
+        .swot-strengths { background-color: var(--color-secondary); }
+        .swot-weaknesses { background-color: var(--color-danger); }
+        .swot-opportunities { background-color: var(--color-accent); color: var(--color-text)}
+        .swot-threats { background-color: var(--color-info); }
+        .swot-title {
+            font-weight: bold;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding-bottom: 0.25rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <h1 class="text-3xl font-bold text-center" style="color: var(--color-primary);">ازدهار التجارة الإلكترونية في منطقة الشرق الأوسط وشمال أفريقيا</h1>
+            <p class="text-center text-gray-600 mt-1">نظرة عميقة على الاتجاهات، الفرص والتحديات</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8">
+        
+        <section id="introduction" class="mb-12">
+            <div class="kpi-card">
+                <div class="kpi-value" style="color: var(--color-secondary);">+250 مليار دولار</div>
+                <div class="kpi-label">الحجم المتوقع لسوق التجارة الإلكترونية في المنطقة بحلول 2027</div>
+            </div>
+            <div class="card mt-6">
+                <p class="text-lg leading-relaxed text-gray-700">
+                    تشهد منطقة الشرق الأوسط وشمال أفريقيا تحولاً رقمياً متسارعاً، وتعتبر التجارة الإلكترونية في طليعة هذا التحول. مع تزايد أعداد مستخدمي الإنترنت وانتشار الهواتف الذكية، تبرز فرص هائلة للنمو والابتكار. يهدف هذا الإنفوجرافيك إلى تقديم لمحة شاملة عن حجم السوق، أبرز الاتجاهات، سلوكيات المستهلكين، والمشهد التنافسي، بالإضافة إلى استشراف الآفاق المستقبلية لهذا القطاع الحيوي.
+                </p>
+            </div>
+        </section>
+
+        <section id="market-overview" class="mb-12">
+            <h2 class="section-title">نظرة عامة على السوق</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="text-xl font-semibold mb-3">نمو حجم سوق التجارة الإلكترونية (مليار دولار)</h3>
+                    <div class="chart-container h-72 md:h-96">
+                        <canvas id="marketSizeChart"></canvas>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-600">يوضح الرسم البياني النمو المطرد في حجم سوق التجارة الإلكترونية خلال السنوات الماضية والتوقعات الإيجابية للسنوات القادمة، مدفوعًا بزيادة الثقة في التسوق عبر الإنترنت وتحسن البنية التحتية اللوجستية والرقمية.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold mb-3">الحصة السوقية حسب الدولة (تقديرات 2024)</h3>
+                    <div class="chart-container h-72 md:h-96">
+                        <canvas id="marketShareChart"></canvas>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-600">تستحوذ دول مجلس التعاون الخليجي على الحصة الأكبر من سوق التجارة الإلكترونية في المنطقة، مع بروز أسواق واعدة في شمال أفريقيا. يعكس هذا التوزيع تباين القوة الشرائية ومستويات التبني الرقمي.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="key-trends" class="mb-12">
+            <h2 class="section-title">الاتجاهات الرئيسية</h2>
+            <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="text-xl font-semibold mb-3">معدلات تبني التكنولوجيا الأساسية</h3>
+                    <div class="chart-container" style="height: 400px;">
+                        <canvas id="techAdoptionChart"></canvas>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-600">تعتبر معدلات انتشار الإنترنت العالي واستخدام الهواتف الذكية من أهم ممكنات نمو التجارة الإلكترونية. الرسم يوضح المقارنة بين دول المنطقة في هذه المؤشرات الحيوية.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold mb-3">القطاعات الأسرع نموًا في التجارة الإلكترونية</h3>
+                    <div class="chart-container" style="height: 400px;">
+                        <canvas id="fastestGrowingSectorsChart"></canvas>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-600">يشهد قطاع الإلكترونيات والأزياء نموًا ملحوظًا، مع تزايد الاهتمام بقطاعات جديدة مثل البقالة عبر الإنترنت ومنتجات الصحة والجمال. يوضح الرسم البياني مساهمة كل قطاع في النمو الإجمالي.</p>
+                </div>
+            </div>
+             <div class="card mt-8">
+                <h3 class="text-xl font-semibold mb-3">تطور تفضيلات الدفع</h3>
+                <p class="text-gray-700 mb-2">لا يزال الدفع عند الاستلام (COD) يتمتع بشعبية، خاصة في الأسواق الناشئة، ولكنه يشهد تراجعًا تدريجيًا لصالح وسائل الدفع الرقمية. العوامل المؤثرة تشمل:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>زيادة الثقة في المعاملات عبر الإنترنت.</li>
+                    <li>توفر خيارات دفع رقمية متنوعة وآمنة (بطاقات ائتمان، محافظ رقمية).</li>
+                    <li>جهود الحكومات والبنوك لتعزيز التحول الرقمي في المدفوعات.</li>
+                    <li>تجارب استخدام أسهل وأسرع للمدفوعات الرقمية.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="competitive-landscape" class="mb-12">
+            <h2 class="section-title">المشهد التنافسي</h2>
+            <div class="card">
+                 <h3 class="text-xl font-semibold mb-3">أبرز اللاعبين وتحليل SWOT</h3>
+                <p class="mb-4 text-gray-700">يشهد سوق التجارة الإلكترونية في المنطقة منافسة قوية بين اللاعبين العالميين الكبار والمنصات المحلية الناشئة. كل لاعب يسعى لتقديم قيمة مضافة من خلال تنوع المنتجات، الأسعار التنافسية، جودة الخدمة، وسرعة التوصيل. فيما يلي تحليل SWOT مبسط للقطاع بشكل عام:</p>
+                <div class="swot-container">
+                    <div class="swot-card swot-strengths">
+                        <h4 class="swot-title">نقاط القوة (Strengths)</h4>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>قاعدة مستخدمين شباب ومتصلين بالإنترنت.</li>
+                            <li>ارتفاع القوة الشرائية في بعض الدول.</li>
+                            <li>دعم حكومي للتحول الرقمي.</li>
+                            <li>تزايد الاستثمار في البنية التحتية.</li>
+                        </ul>
+                    </div>
+                    <div class="swot-card swot-weaknesses">
+                        <h4 class="swot-title">نقاط الضعف (Weaknesses)</h4>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>تحديات لوجستية في بعض المناطق.</li>
+                            <li>الاعتماد على الدفع عند الاستلام.</li>
+                            <li>نقص الكفاءات المتخصصة في التجارة الرقمية.</li>
+                            <li>قضايا تتعلق بالأمن السيبراني والثقة.</li>
+                        </ul>
+                    </div>
+                    <div class="swot-card swot-opportunities">
+                        <h4 class="swot-title">الفرص (Opportunities)</h4>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>إمكانات نمو كبيرة في الأسواق غير المستغلة.</li>
+                            <li>توسع التجارة عبر الحدود.</li>
+                            <li>تطور تقنيات مثل الذكاء الاصطناعي والبيانات الضخمة.</li>
+                            <li>زيادة تبني الدفع الرقمي.</li>
+                        </ul>
+                    </div>
+                    <div class="swot-card swot-threats">
+                        <h4 class="swot-title">التهديدات (Threats)</h4>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>المنافسة الشديدة من اللاعبين العالميين.</li>
+                            <li>التغيرات في اللوائح والتشريعات.</li>
+                            <li>تقلبات أسعار الصرف في بعض الدول.</li>
+                            <li>مخاوف بشأن خصوصية البيانات.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="consumer-insights" class="mb-12">
+            <h2 class="section-title">رؤى حول المستهلكين</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="text-xl font-semibold mb-3">العوامل المؤثرة في قرار الشراء عبر الإنترنت</h3>
+                     <div class="chart-container h-72 md:h-96">
+                        <canvas id="purchaseFactorsChart"></canvas>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-600">يعطي المستهلكون أهمية لمجموعة من العوامل عند التسوق عبر الإنترنت. السعر وتنوع المنتجات يأتيان في المقدمة، مع تزايد الاهتمام بجودة خدمة العملاء وسهولة عمليات الإرجاع والاستبدال.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold mb-3">سلوكيات الإنفاق حسب الفئة العمرية</h3>
+                    <div class="chart-container h-72 md:h-96">
+                        <canvas id="ageSpendingChart"></canvas>
+                    </div>
+                     <p class="mt-3 text-sm text-gray-600">تمثل الفئات العمرية الشابة النسبة الأكبر من المتسوقين عبر الإنترنت، مع ميلهم لإنفاق أكبر على الإلكترونيات والترفيه. الرسم يوضح متوسط الإنفاق السنوي وحجم الفئة.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="future-outlook" class="mb-12">
+            <h2 class="section-title">التوقعات المستقبلية والخلاصة</h2>
+            <div class="card">
+                <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                    مستقبل التجارة الإلكترونية في منطقة الشرق الأوسط وشمال أفريقيا واعد للغاية. من المتوقع أن يستمر النمو بمعدلات مرتفعة، مدفوعًا بالابتكار التكنولوجي، تحسن تجربة المستخدم، وزيادة الاستثمارات. ستلعب التقنيات الناشئة مثل الذكاء الاصطناعي، الواقع المعزز، والتجارة الاجتماعية دورًا محوريًا في تشكيل مستقبل هذا القطاع.
+                </p>
+                <h3 class="text-xl font-semibold mb-3">توقعات تبني التقنيات المتقدمة في التجارة الإلكترونية</h3>
+                <div class="chart-container" style="height: 350px;">
+                    <canvas id="futureTechAdoptionChart"></canvas>
+                </div>
+                <p class="mt-3 text-sm text-gray-600">يوضح الرسم البياني توقعات تبني الشركات لتقنيات مثل الذكاء الاصطناعي لتحليل سلوك العملاء، والواقع المعزز لتجربة المنتجات، مما سيعزز من تخصيص تجربة التسوق.</p>
+                <p class="mt-4 text-lg leading-relaxed text-gray-700">
+                    على الرغم من التحديات القائمة، فإن الفرص المتاحة تفوقها بكثير. يتطلب الأمر من الشركات العاملة في هذا المجال التركيز على فهم احتياجات المستهلكين، الاستثمار في التكنولوجيا، وتوفير تجربة تسوق سلسة وآمنة لكسب ثقة العملاء وتحقيق النمو المستدام.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 text-center">
+        <p>&copy; 2025 إنفوجرافيك اتجاهات الصناعة. جميع الحقوق محفوظة (بيانات تقديرية لأغراض العرض).</p>
+    </footer>
+
+    <script>
+        const CHART_COLORS = {
+            primary: 'rgba(0, 123, 255, 0.7)',
+            secondary: 'rgba(40, 167, 69, 0.7)',
+            accent: 'rgba(255, 193, 7, 0.7)',
+            info: 'rgba(23, 162, 184, 0.7)',
+            danger: 'rgba(220, 53, 69, 0.7)',
+            purple: 'rgba(111, 66, 193, 0.7)',
+            primary_border: 'rgb(0, 123, 255)',
+            secondary_border: 'rgb(40, 167, 69)',
+            accent_border: 'rgb(255, 193, 7)',
+            info_border: 'rgb(23, 162, 184)',
+            danger_border: 'rgb(220, 53, 69)',
+            purple_border: 'rgb(111, 66, 193)',
+        };
+
+        function wrapText(text, maxWidth) {
+            if (typeof text !== 'string') return text;
+            if (text.length <= maxWidth) return text;
+
+            const words = text.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + words[i].length + 1 <= maxWidth) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+        
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        const commonChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        font: { family: 'Tajawal' }
+                    }
+                },
+                tooltip: {
+                    titleFont: { family: 'Tajawal' },
+                    bodyFont: { family: 'Tajawal' },
+                    callbacks: { title: tooltipTitleCallback }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { font: { family: 'Tajawal' } },
+                    grid: { display: false }
+                },
+                y: {
+                    ticks: { font: { family: 'Tajawal' } },
+                    grid: { color: 'rgba(0,0,0,0.05)'}
+                }
+            }
+        };
+
+
+        new Chart(document.getElementById('marketSizeChart'), {
+            type: 'line',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024 (تقديري)', '2025 (متوقع)', '2026 (متوقع)', '2027 (متوقع)'],
+                datasets: [{
+                    label: 'حجم السوق (مليار دولار)',
+                    data: [80, 105, 130, 160, 190, 215, 235, 255],
+                    borderColor: CHART_COLORS.primary_border,
+                    backgroundColor: CHART_COLORS.primary,
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: commonChartOptions
+        });
+
+        new Chart(document.getElementById('marketShareChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['السعودية', 'الإمارات', 'مصر', 'باقي دول الخليج', 'باقي دول شمال أفريقيا', 'دول أخرى'],
+                datasets: [{
+                    label: 'الحصة السوقية',
+                    data: [35, 25, 15, 10, 8, 7],
+                    backgroundColor: [CHART_COLORS.primary, CHART_COLORS.secondary, CHART_COLORS.accent, CHART_COLORS.info, CHART_COLORS.danger, CHART_COLORS.purple],
+                }]
+            },
+            options: { ...commonChartOptions, cutout: '60%' }
+        });
+
+        const techAdoptionLabels = [
+            'انتشار الإنترنت عالي السرعة', 
+            'استخدام الهواتف الذكية بين السكان', 
+            'معدل استخدام وسائل الدفع الرقمي', 
+            'تبني خدمات الحوسبة السحابية للأعمال'
+        ].map(label => wrapText(label, 16));
+
+        new Chart(document.getElementById('techAdoptionChart'), {
+            type: 'bar',
+            data: {
+                labels: techAdoptionLabels,
+                datasets: [
+                    {
+                        label: 'الإمارات',
+                        data: [95, 98, 85, 75],
+                        backgroundColor: CHART_COLORS.primary,
+                        borderColor: CHART_COLORS.primary_border,
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'السعودية',
+                        data: [92, 96, 78, 70],
+                        backgroundColor: CHART_COLORS.secondary,
+                        borderColor: CHART_COLORS.secondary_border,
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'مصر',
+                        data: [75, 80, 55, 45],
+                        backgroundColor: CHART_COLORS.accent,
+                        borderColor: CHART_COLORS.accent_border,
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                ...commonChartOptions,
+                scales: {
+                    x: { ...commonChartOptions.scales.x, ticks: {...commonChartOptions.scales.x.ticks, maxRotation: 0, minRotation: 0} },
+                    y: { ...commonChartOptions.scales.y, suggestedMax: 100, title: { display: true, text: 'النسبة المئوية (%)' , font: { family: 'Tajawal' }} }
+                }
+            }
+        });
+        
+        const fastestGrowingSectorsLabels = [
+            'الإلكترونيات والأجهزة المنزلية', 
+            'الأزياء والملابس والإكسسوارات', 
+            'منتجات الصحة والجمال والعناية الشخصية', 
+            'البقالة والمواد الغذائية عبر الإنترنت',
+            'الأثاث والديكور المنزلي'
+        ].map(label => wrapText(label, 16));
+        
+        new Chart(document.getElementById('fastestGrowingSectorsChart'), {
+            type: 'bar',
+            data: {
+                labels: fastestGrowingSectorsLabels,
+                datasets: [
+                    {
+                        label: 'معدل النمو السنوي المتوقع (%)',
+                        data: [22, 18, 25, 30, 15],
+                        backgroundColor: [CHART_COLORS.primary, CHART_COLORS.secondary, CHART_COLORS.accent, CHART_COLORS.info, CHART_COLORS.purple],
+                    }
+                ]
+            },
+            options: {
+                 ...commonChartOptions,
+                 indexAxis: 'y',
+                 scales: {
+                    x: { ...commonChartOptions.scales.x, title: { display: true, text: 'معدل النمو (%)' , font: { family: 'Tajawal' }} },
+                    y: { ...commonChartOptions.scales.y }
+                }
+            }
+        });
+
+        const purchaseFactorsLabels = [
+            'السعر المنافس', 
+            'تنوع المنتجات والجودة', 
+            'تكلفة وسرعة الشحن والتوصيل', 
+            'سهولة عملية الإرجاع والاستبدال', 
+            'أمان وسائل الدفع وتنوعها', 
+            'سمعة المتجر وتقييمات المستخدمين'
+        ].map(label => wrapText(label, 16));
+
+        new Chart(document.getElementById('purchaseFactorsChart'), {
+            type: 'radar',
+            data: {
+                labels: purchaseFactorsLabels,
+                datasets: [{
+                    label: 'أهمية العامل (من 5)',
+                    data: [4.8, 4.5, 4.2, 4.0, 4.6, 4.3],
+                    fill: true,
+                    backgroundColor: CHART_COLORS.primary,
+                    borderColor: CHART_COLORS.primary_border,
+                    pointBackgroundColor: CHART_COLORS.primary_border,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: CHART_COLORS.primary_border
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                scales: {
+                    r: {
+                        angleLines: { display: true },
+                        suggestedMin: 0,
+                        suggestedMax: 5,
+                        pointLabels: { font: { family: 'Tajawal', size: 10 } },
+                        ticks: { backdropColor: 'transparent', font: { family: 'Tajawal' } }
+                    }
+                },
+                plugins: { legend: { position: 'top' } }
+            }
+        });
+
+        new Chart(document.getElementById('ageSpendingChart'), {
+            type: 'bubble',
+            data: {
+                datasets: [
+                    {
+                        label: '18-24 سنة',
+                        data: [{ x: 20, y: 300, r: 25 }], 
+                        backgroundColor: CHART_COLORS.primary
+                    },
+                    {
+                        label: '25-34 سنة',
+                        data: [{ x: 35, y: 500, r: 35 }],
+                        backgroundColor: CHART_COLORS.secondary
+                    },
+                    {
+                        label: '35-44 سنة',
+                        data: [{ x: 25, y: 400, r: 30 }],
+                        backgroundColor: CHART_COLORS.accent
+                    },
+                    {
+                        label: '45+ سنة',
+                        data: [{ x: 15, y: 250, r: 20 }],
+                        backgroundColor: CHART_COLORS.info
+                    }
+                ]
+            },
+            options: {
+                ...commonChartOptions,
+                scales: {
+                    x: { title: { display: true, text: 'نسبة المتسوقين من الفئة (%)', font: { family: 'Tajawal' }} },
+                    y: { title: { display: true, text: 'متوسط الإنفاق السنوي (دولار)', font: { family: 'Tajawal' }} }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += `إنفاق ${context.parsed.y}$، نسبة ${context.parsed.x}%، حجم ${context.parsed.r}`;
+                                }
+                                return label;
+                            },
+                            title: () => ''
+                        }
+                    }
+                }
+            }
+        });
+        
+        new Chart(document.getElementById('futureTechAdoptionChart'), {
+            type: 'line',
+            data: {
+                labels: ['2024', '2025', '2026', '2027', '2028'],
+                datasets: [
+                    {
+                        label: 'الذكاء الاصطناعي والتخصيص',
+                        data: [30, 45, 60, 75, 85],
+                        borderColor: CHART_COLORS.primary_border,
+                        backgroundColor: CHART_COLORS.primary,
+                        fill: true,
+                        tension: 0.3
+                    },
+                    {
+                        label: 'الواقع المعزز/الافتراضي للتجربة',
+                        data: [10, 20, 35, 50, 65],
+                        borderColor: CHART_COLORS.secondary_border,
+                        backgroundColor: CHART_COLORS.secondary,
+                        fill: true,
+                        tension: 0.3
+                    },
+                     {
+                        label: 'التجارة الاجتماعية والمحادثات',
+                        data: [25, 40, 55, 70, 80],
+                        borderColor: CHART_COLORS.accent_border,
+                        backgroundColor: CHART_COLORS.accent,
+                        fill: true,
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                ...commonChartOptions,
+                 scales: {
+                    y: { ...commonChartOptions.scales.y, suggestedMax: 100, title: { display: true, text: 'نسبة تبني الشركات (%)' , font: { family: 'Tajawal' }} }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
